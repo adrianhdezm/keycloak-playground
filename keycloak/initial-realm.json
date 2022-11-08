@@ -1,0 +1,42 @@
+{
+  "realm": "${REALM_NAME}",
+  "enabled": true,
+  "sslRequired": "external",
+  "registrationAllowed": false,
+  "requiredCredentials": ["password"],
+  "users": [
+    {
+      "username": "${REALM_FIRST_USER}",
+      "enabled": true,
+      "email": "${REALM_FIRST_USER_EMAIL}",
+      "emailVerified": true,
+      "firstName": "${REALM_FIRST_USER_FIRST_NAME}",
+      "lastName": "${REALM_FIRST_USER_LAST_NAME}",
+      "credentials": [
+        { "type": "password", "value": "${REALM_FIRST_USER_PASSWORD}" }
+      ],
+      "realmRoles": ["user"],
+      "clientRoles": {
+        "account": ["view-profile", "manage-account"]
+      }
+    }
+  ],
+  "roles": {
+    "realm": [
+      { "name": "user", "description": "User privileges" },
+      { "name": "admin", "description": "Administrator privileges" }
+    ]
+  },
+  "scopeMappings": [{ "client": "api-service", "roles": ["user"] }],
+  "clients": [
+    {
+      "clientId": "web-app",
+      "enabled": true,
+      "publicClient": true,
+      "rootUrl": "http://localhost:3000/",
+      "baseUrl": "http://localhost:3000/",
+      "redirectUris": ["http://localhost:3000/*"],
+      "webOrigins": []
+    }
+  ]
+}
