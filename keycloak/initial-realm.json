@@ -27,16 +27,16 @@
       { "name": "admin", "description": "Administrator privileges" }
     ]
   },
-  "scopeMappings": [{ "client": "api-service", "roles": ["user"] }],
+  "scopeMappings": [{ "client": "${WEB_CLIENT_ID}", "roles": ["user"] }],
   "clients": [
     {
-      "clientId": "web-app",
+      "clientId": "${WEB_CLIENT_ID}",
       "enabled": true,
       "publicClient": true,
-      "rootUrl": "http://localhost:3000/",
-      "baseUrl": "http://localhost:3000/",
-      "redirectUris": ["http://localhost:3000/*"],
-      "webOrigins": []
+      "rootUrl": "${WEB_CLIENT_URL}",
+      "baseUrl": "${WEB_CLIENT_URL}",
+      "redirectUris": ["${WEB_CLIENT_URL}/*"],
+      "webOrigins": ["${WEB_CLIENT_URL}"]
     }
   ]
 }

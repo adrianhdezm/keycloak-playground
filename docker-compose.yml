@@ -1,5 +1,17 @@
 version: "3.9"
 services:
+  web:
+    image: nginx:stable-alpine
+    ports:
+      - 8000:8000
+    volumes:
+      - ./web/nginx.conf:/etc/nginx/templates/default.conf.template
+      - ./web/www:/usr/share/nginx/html
+    environment:
+      - PORT=8000
+      - KC_BASE_URL=http://localhost:8080
+      - KC_CLIENT_ID=webapp
+      - KC_REALM=example.com
   keycloak:
     image: quay.io/keycloak/keycloak:20.0.0
     ports:
@@ -15,5 +27,7 @@ services:
       - REALM_FIRST_USER_EMAIL=max.mustermann@example.com
       - REALM_FIRST_USER_FIRST_NAME=Max
       - REALM_FIRST_USER_LAST_NAME=Mustermann
+      - WEB_CLIENT_ID=webapp
+      - WEB_CLIENT_URL=http://localhost:8000
     command: 
       - start-dev --import-realm

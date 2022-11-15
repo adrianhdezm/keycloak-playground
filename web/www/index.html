@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="kc-client-id" content="##KC_CLIENT_ID##" />
+    <meta name="kc-realm" content="##KC_REALM##" />
+    <title>Keycloak Playground</title>
+    <script type="text/javascript" src="##KC_BASE_URL##/js/keycloak.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+  <body>
+    <div id="anonymous" style="display: none">
+        <button onclick="login()">Login</button>
+    </div>
+    
+    <div id="user" style="display: none">
+        <button onclick="logout()">Logout</button>
+        <button onclick="showIdToken()">Show ID Token</button>
+        <button onclick="showAccessToken()">Show Access Token</button>
+        <button onclick="updateToken()">Refresh</button>
+        <hr/>
+        <h2 id="name"></h2>
+        <hr/>
+        <pre id="content"></pre>
+    </div>
+  </body>
+</html>
